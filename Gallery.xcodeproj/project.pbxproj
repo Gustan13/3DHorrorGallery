@@ -14,6 +14,11 @@
 		52EC86182AC2F7A7005B55C1 /* GalleryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC86172AC2F7A7005B55C1 /* GalleryTests.swift */; };
 		52EC86222AC2F7A7005B55C1 /* GalleryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC86212AC2F7A7005B55C1 /* GalleryUITests.swift */; };
 		52EC86242AC2F7A7005B55C1 /* GalleryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC86232AC2F7A7005B55C1 /* GalleryUITestsLaunchTests.swift */; };
+		52EC86A12AC31880005B55C1 /* corridor.scn in Resources */ = {isa = PBXBuildFile; fileRef = 52EC86A02AC31880005B55C1 /* corridor.scn */; };
+		52EC86A32AC3188D005B55C1 /* map.scn in Resources */ = {isa = PBXBuildFile; fileRef = 52EC86A22AC3188C005B55C1 /* map.scn */; };
+		52EC86AB2AC31AF3005B55C1 /* corner.scn in Resources */ = {isa = PBXBuildFile; fileRef = 52EC86A82AC31AF3005B55C1 /* corner.scn */; };
+		52EC86AC2AC31AF3005B55C1 /* triple.scn in Resources */ = {isa = PBXBuildFile; fileRef = 52EC86A92AC31AF3005B55C1 /* triple.scn */; };
+		52EC86AD2AC31AF3005B55C1 /* quart.scn in Resources */ = {isa = PBXBuildFile; fileRef = 52EC86AA2AC31AF3005B55C1 /* quart.scn */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,12 @@
 		52EC861D2AC2F7A7005B55C1 /* GalleryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GalleryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52EC86212AC2F7A7005B55C1 /* GalleryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryUITests.swift; sourceTree = "<group>"; };
 		52EC86232AC2F7A7005B55C1 /* GalleryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		52EC867B2AC3138D005B55C1 /* corridor.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = corridor.dae; sourceTree = "<group>"; };
+		52EC86A02AC31880005B55C1 /* corridor.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = corridor.scn; sourceTree = "<group>"; };
+		52EC86A22AC3188C005B55C1 /* map.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = map.scn; sourceTree = "<group>"; };
+		52EC86A82AC31AF3005B55C1 /* corner.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = corner.scn; sourceTree = "<group>"; };
+		52EC86A92AC31AF3005B55C1 /* triple.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = triple.scn; sourceTree = "<group>"; };
+		52EC86AA2AC31AF3005B55C1 /* quart.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = quart.scn; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +105,8 @@
 		52EC86052AC2F7A6005B55C1 /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
+				52EC867A2AC31383005B55C1 /* Objs */,
+				52EC86302AC30036005B55C1 /* Materials */,
 				52EC86062AC2F7A6005B55C1 /* GalleryApp.swift */,
 				52EC86082AC2F7A6005B55C1 /* ContentView.swift */,
 				52EC860A2AC2F7A7005B55C1 /* Assets.xcassets */,
@@ -125,6 +138,26 @@
 				52EC86232AC2F7A7005B55C1 /* GalleryUITestsLaunchTests.swift */,
 			);
 			path = GalleryUITests;
+			sourceTree = "<group>";
+		};
+		52EC86302AC30036005B55C1 /* Materials */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Materials;
+			sourceTree = "<group>";
+		};
+		52EC867A2AC31383005B55C1 /* Objs */ = {
+			isa = PBXGroup;
+			children = (
+				52EC867B2AC3138D005B55C1 /* corridor.dae */,
+				52EC86A82AC31AF3005B55C1 /* corner.scn */,
+				52EC86AA2AC31AF3005B55C1 /* quart.scn */,
+				52EC86A92AC31AF3005B55C1 /* triple.scn */,
+				52EC86A02AC31880005B55C1 /* corridor.scn */,
+				52EC86A22AC3188C005B55C1 /* map.scn */,
+			);
+			path = Objs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,8 +264,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52EC86AD2AC31AF3005B55C1 /* quart.scn in Resources */,
+				52EC86A32AC3188D005B55C1 /* map.scn in Resources */,
+				52EC86AC2AC31AF3005B55C1 /* triple.scn in Resources */,
 				52EC860E2AC2F7A7005B55C1 /* Preview Assets.xcassets in Resources */,
+				52EC86A12AC31880005B55C1 /* corridor.scn in Resources */,
 				52EC860B2AC2F7A7005B55C1 /* Assets.xcassets in Resources */,
+				52EC86AB2AC31AF3005B55C1 /* corner.scn in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
