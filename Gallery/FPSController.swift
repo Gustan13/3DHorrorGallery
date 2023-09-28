@@ -21,6 +21,14 @@ class FPSController : ObservableObject {
     init() {
         playerNode.camera = SCNCamera()
         playerNode.rotation = SCNQuaternion(x: 0, y: angle, z: 0, w: angle)
+        
+        playerNode.light = SCNLight()
+        playerNode.light?.type = .omni
+        playerNode.light?.color = UIColor.gray
+        playerNode.light?.attenuationEndDistance = 15
+        
+        playerNode.camera?.fieldOfView = 60
+        self.setPosition(SCNVector3(x: 0, y: 0, z: 0))
     }
     
     public func setAngle(_ angle: Float) { self.angle = angle }
@@ -64,7 +72,22 @@ class FPSController : ObservableObject {
     public func forward(_ scene: SCNScene) {
         
         if !canMove { return }
+        if playerFrontEmpty(scene) { return }
         
+        canMove = false
+        
+        for i in 0...15 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(i * 30)) {
+                self.playerNode.localTranslate(by: SCNVector3(x: 0, y: 0, z: -1/4))
+                
+                if i == 15 {
+                    self.canMove = true
+                }
+            }
+        }
+    }
+    
+    public func playerFrontEmpty(_ scene: SCNScene) -> Bool {
         var nextPosition = playerNode.position
         
         nextPosition.x += sin(playerNode.rotation.y) * -4
@@ -85,19 +108,8 @@ class FPSController : ObservableObject {
         }
         
         if obstacle.isEmpty {
-            return
+            return true
         }
-        
-        canMove = false
-        
-        for i in 0...15 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(i * 30)) {
-                self.playerNode.localTranslate(by: SCNVector3(x: 0, y: 0, z: -1/4))
-                
-                if i == 15 {
-                    self.canMove = true
-                }
-            }
-        }
+        return false
     }
 }

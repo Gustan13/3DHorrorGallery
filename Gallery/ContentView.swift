@@ -10,9 +10,10 @@ import SceneKit
 
 struct ContentView: View {
     
-    var scnScene : SCNScene = SCNScene(named: "map.scn")!
+    var scnScene : SCNScene = SCNScene(named: "map_2.scn")!
     var scnCamera : SCNNode = SCNNode()
     var renderDelegate : RenderDelegate = RenderDelegate()
+    var mapManager : MapManager = MapManager()
     
     @StateObject var fpsCtr = FPSController()
     
@@ -21,36 +22,21 @@ struct ContentView: View {
             
             SceneView(scene: scnScene, pointOfView: fpsCtr.getNode(), preferredFramesPerSecond: 60, delegate: renderDelegate)
                 .onAppear {
-                    scnScene.fogDensityExponent = CGFloat(1)
-                    scnScene.fogStartDistance = CGFloat(5)
-                    scnScene.fogEndDistance = CGFloat(8)
-                    scnScene.fogColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.25)
-                    
-                    fpsCtr.getNode().light = SCNLight()
-                    fpsCtr.getNode().light?.type = .omni
-                    fpsCtr.getNode().light?.color = UIColor.gray
-                    fpsCtr.getNode().light?.attenuationEndDistance = 15
-                    
-                    fpsCtr.getNode().camera?.fieldOfView = 60
-                    fpsCtr.setPosition(SCNVector3(x: 0, y: 0, z: 0))
-                    
                     scnScene.rootNode.addChildNode(fpsCtr.getNode())
+//
+//                    let poster = SCNNode(geometry: SCNPlane(width: 1, height: 1.2))
+//                    let material = SCNMaterial()
+//
+//                    material.diffuse.contents = UIImage(named: "poster_1.jpg")
+//
+//                    poster.geometry?.firstMaterial = material
+//                    poster.name = "Silence of The Lambs"
+//
+//                    poster.position = SCNVector3(x: 0, y: 0, z: -1.99)
+//
+//                    scnScene.rootNode.addChildNode(poster)
                     
-                    let poster = SCNNode(geometry: SCNPlane(width: 1, height: 1.2))
-                    let material = SCNMaterial()
-                    
-                    material.diffuse.contents = UIImage(named: "poster_1.jpg")
-                    
-                    scnScene.background.contents = UIColor.black
-                    
-                    poster.geometry?.firstMaterial = material
-                    poster.name = "Silence of The Lambs"
-                    
-                    poster.position = SCNVector3(x: 0, y: 0, z: -1.99)
-                    
-                    poster.castsShadow = true
-                    
-                    scnScene.rootNode.addChildNode(poster)
+                    mapManager.createMap(scene: scnScene, player: fpsCtr.getNode(), map: map)
                 }
                 .edgesIgnoringSafeArea(.all)
                 .gesture(
@@ -60,45 +46,43 @@ struct ContentView: View {
                                 let hits = renderer.hitTest(event.location, options: nil)
                                 if let tappedNode = hits.first?.node {
                                     print("Hello")
-                                    print(tappedNode.name ?? "Wierd")
                                 }
                         })
                 )
             VStack {
+                HStack {
+                    Spacer()
+                    InGameButton(funcToExec: {
+                        if fpsCtr.playerFrontEmpty(scnScene) {
+                            let sphere = SCNNode(geometry: SCNPlane(width: 1, height: 1))
+                            let playerPos = fpsCtr.getPosition()
+                            let playerRot = fpsCtr.getRotation()
+                            
+                            sphere.position = playerPos
+                            sphere.position.x -= sin(playerRot.y) * 1.95
+                            sphere.position.z -= cos(playerRot.y) * 1.95
+                            sphere.rotation = playerRot
+                            
+                            scnScene.rootNode.addChildNode(sphere)
+                        }
+                    }, image: "plus.app.fill")
+                    .padding()
+                }
                 Spacer()
                 HStack {
-                    Button {
-                        fpsCtr.rotate(.esquerda)
-                    } label: {
-                        Text("Rotate Left")
-                            .padding()
-                            .background {
-                                Color.black
-                            }
-                            .cornerRadius(8)
-                    }
-                    
-                    Button {
+                    InGameButton(funcToExec: {
                         fpsCtr.forward(scnScene)
-                    } label: {
-                        Text("Forward")
-                            .padding()
-                            .background {
-                                Color.black
-                            }
-                            .cornerRadius(8)
-                    }
-                    Button {
+                    }, image: "arrow.up")
+                    
+                    Spacer()
+                    
+                    InGameButton(funcToExec: {
+                        fpsCtr.rotate(.esquerda)
+                    }, image: "arrow.turn.up.left")
+                    
+                    InGameButton(funcToExec: {
                         fpsCtr.rotate(.direita)
-                    } label: {
-                        Text("Rotate Right")
-                            .padding()
-                            .background {
-                                Color.black
-                            }
-                            .cornerRadius(8)
-
-                    }
+                    }, image: "arrow.turn.up.right")
                 }
             }
         }
