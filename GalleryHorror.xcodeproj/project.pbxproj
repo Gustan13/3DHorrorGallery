@@ -12,6 +12,9 @@
 		521B4A3A2AC5227100E372C4 /* map_2.scn in Resources */ = {isa = PBXBuildFile; fileRef = 521B4A392AC5227100E372C4 /* map_2.scn */; };
 		521B4A3C2AC5235400E372C4 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521B4A3B2AC5235400E372C4 /* MapManager.swift */; };
 		521B4A3E2AC5A10900E372C4 /* InGameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521B4A3D2AC5A10900E372C4 /* InGameButton.swift */; };
+		521B4A422AC5AD8C00E372C4 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521B4A412AC5AD8C00E372C4 /* ProfileModel.swift */; };
+		521B4A442AC5AE2400E372C4 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521B4A432AC5AE2400E372C4 /* ProfileImage.swift */; };
+		521B4A462AC5AE7400E372C4 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521B4A452AC5AE7400E372C4 /* Profile.swift */; };
 		52D244FD2AC4706C008E4A42 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D244FC2AC4706C008E4A42 /* Renderer.swift */; };
 		52EC86072AC2F7A6005B55C1 /* GalleryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC86062AC2F7A6005B55C1 /* GalleryApp.swift */; };
 		52EC86092AC2F7A6005B55C1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC86082AC2F7A6005B55C1 /* ContentView.swift */; };
@@ -51,6 +54,9 @@
 		521B4A392AC5227100E372C4 /* map_2.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = map_2.scn; sourceTree = "<group>"; };
 		521B4A3B2AC5235400E372C4 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		521B4A3D2AC5A10900E372C4 /* InGameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InGameButton.swift; sourceTree = "<group>"; };
+		521B4A412AC5AD8C00E372C4 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		521B4A432AC5AE2400E372C4 /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
+		521B4A452AC5AE7400E372C4 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		52D244FC2AC4706C008E4A42 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		52EC86032AC2F7A6005B55C1 /* GalleryGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GalleryGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52EC86062AC2F7A6005B55C1 /* GalleryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryApp.swift; sourceTree = "<group>"; };
@@ -125,9 +131,12 @@
 				52EC86AE2AC3C638005B55C1 /* FPSController.swift */,
 				52D244FC2AC4706C008E4A42 /* Renderer.swift */,
 				521B4A3B2AC5235400E372C4 /* MapManager.swift */,
+				521B4A3D2AC5A10900E372C4 /* InGameButton.swift */,
+				521B4A412AC5AD8C00E372C4 /* ProfileModel.swift */,
+				521B4A432AC5AE2400E372C4 /* ProfileImage.swift */,
+				521B4A452AC5AE7400E372C4 /* Profile.swift */,
 				52EC860A2AC2F7A7005B55C1 /* Assets.xcassets */,
 				52EC860C2AC2F7A7005B55C1 /* Preview Content */,
-				521B4A3D2AC5A10900E372C4 /* InGameButton.swift */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -318,10 +327,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				52D244FD2AC4706C008E4A42 /* Renderer.swift in Sources */,
+				521B4A442AC5AE2400E372C4 /* ProfileImage.swift in Sources */,
+				521B4A422AC5AD8C00E372C4 /* ProfileModel.swift in Sources */,
 				521B4A3C2AC5235400E372C4 /* MapManager.swift in Sources */,
 				52EC86AF2AC3C638005B55C1 /* FPSController.swift in Sources */,
 				52EC86092AC2F7A6005B55C1 /* ContentView.swift in Sources */,
 				521B4A3E2AC5A10900E372C4 /* InGameButton.swift in Sources */,
+				521B4A462AC5AE7400E372C4 /* Profile.swift in Sources */,
 				52EC86072AC2F7A6005B55C1 /* GalleryApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
