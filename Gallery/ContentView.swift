@@ -18,6 +18,8 @@ struct ContentView: View {
     @StateObject var fpsCtr = FPSController()
     @StateObject var viewModel = ProfileModel()
     
+    @Binding var tab : Int
+    
     var body: some View {
         ZStack {
             SceneView(scene: scnScene, pointOfView: fpsCtr.getNode(), preferredFramesPerSecond: 60, delegate: renderDelegate)
@@ -27,18 +29,13 @@ struct ContentView: View {
                     mapManager.createMap(scene: scnScene, player: fpsCtr.getNode(), map: map)
                 }
                 .edgesIgnoringSafeArea(.all)
-//                .gesture(
-//                    SpatialTapGesture(count: 1)
-//                        .onEnded({ event in
-//                            guard let renderer = renderDelegate.lastRenderer else { return }
-//                                let hits = renderer.hitTest(event.location, options: nil)
-//                                if let tappedNode = hits.first?.node {
-//                                    print("Hello")
-//                                }
-//                        })
-//                )
             VStack {
                 HStack {
+                    InGameButton(funcToExec: {
+                        withAnimation {
+                            tab = 0
+                        }
+                    }, image: "house.fill")
                     Spacer()
                     EditableCircularProfileImage(viewModel: viewModel)
                     InGameButton(funcToExec: {
@@ -61,7 +58,6 @@ struct ContentView: View {
                         if fpsCtr.playerFrontEmpty(scnScene) {
                             let sphere = SCNNode(geometry: SCNPlane(width: 1, height: 1))
                             let framen = SCNScene(named: "frame_2.scn")!.rootNode
-//                            let framen = SCNNode(geometry: SCNSphere(radius: 1))
                             
                             let playerPos = fpsCtr.getPosition()
                             let playerRot = fpsCtr.getRotation()
@@ -69,8 +65,6 @@ struct ContentView: View {
                             
                             let pW = image.size.width
                             let pH = image.size.height
-                            
-                            framen.addChildNode(sphere)
                             
                             framen.position = playerPos
                             framen.position.x -= sin(playerRot.y) * 1.99
@@ -81,13 +75,14 @@ struct ContentView: View {
                             sphere.geometry?.materials = [imageMaterial]
                             
                             let sml = pW < pH ? (pW) : (pH)
-//                            let big = pW > pH ? (pW) : (pH)
                             
-//                            sphere.scale.x = Float(pW / sml)
-//                            sphere.scale.y = Float(pH / sml)
+                            framen.scale.x = Float(pW / sml) * 1.2
+                            framen.scale.y = Float(pH / sml) * 1.2
                             
-                            framen.scale.x = Float(pW / sml)
-                            framen.scale.y = Float(pH / sml)
+                            framen.addChildNode(sphere)
+                            
+                            sphere.scale.x = sphere.scale.x / 1.1
+                            sphere.scale.y = sphere.scale.y / 1.1
                             
                             scnScene.rootNode.addChildNode(framen)
                         }
@@ -112,11 +107,5 @@ struct ContentView: View {
                 }
             }
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

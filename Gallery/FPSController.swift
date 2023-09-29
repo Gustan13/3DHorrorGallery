@@ -25,10 +25,10 @@ class FPSController : ObservableObject {
         playerNode.light = SCNLight()
         playerNode.light?.type = .omni
         playerNode.light?.color = UIColor.white
-        playerNode.light?.attenuationEndDistance = 20 /*15*/
-        playerNode.light?.intensity = 100
+        playerNode.light?.attenuationEndDistance = 15
+        playerNode.light?.intensity = 500
         
-        playerNode.camera?.fieldOfView = 55
+        playerNode.camera?.fieldOfView = 65
         self.setPosition(SCNVector3(x: 0, y: 0, z: 0))
     }
     

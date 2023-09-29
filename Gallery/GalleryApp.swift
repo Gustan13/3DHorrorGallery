@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+@available(iOS 17.0, *)
 @main
 struct GalleryApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Main()
         }
     }
 }

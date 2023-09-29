@@ -8,13 +8,38 @@
 import SwiftUI
 
 struct Main: View {
+    
+    @State var tab : Int = 0
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+        if tab == 0 {
+            Button {
+                withAnimation {
+                    tab = 1
+                }
+            } label: {
+                Text("Go to Game")
+            }
+            Button {
+                withAnimation {
+                    tab = 2
+                }
+            } label: {
+                Text("Edit Map")
+            }
 
-struct Main_Previews: PreviewProvider {
-    static var previews: some View {
-        Main()
+        } else if tab == 1 {
+            ContentView(tab: $tab)
+                .transition(.move(edge: .top))
+        } else if tab == 2 {
+            Button {
+                withAnimation {
+                    tab = 0
+                }
+            } label: {
+                Text("Go Back")
+            }
+            .transition(.scale)
+        }
     }
 }
