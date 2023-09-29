@@ -23,24 +23,6 @@ struct ContentView: View {
             SceneView(scene: scnScene, pointOfView: fpsCtr.getNode(), preferredFramesPerSecond: 60, delegate: renderDelegate)
                 .onAppear {
                     scnScene.rootNode.addChildNode(fpsCtr.getNode())
-
-//                    let poster = SCNNode(geometry: SCNPlane(width: 1, height: 1.2))
-//                    let material = SCNMaterial()
-//                    let light = SCNLight()
-//
-//                    material.diffuse.contents = UIImage(named: "poster_1.jpg")
-//                    light.type = .omni
-//                    light.color = UIColor.systemOrange
-//                    light.attenuationEndDistance = 5
-//                    
-//                    poster.geometry?.firstMaterial = material
-//                    poster.name = "Silence of The Lambs"
-//
-//                    poster.position = SCNVector3(x: 0, y: 0, z: -1.99)
-//                    
-//                    poster.light = light
-//
-//                    scnScene.rootNode.addChildNode(poster)
                     
                     mapManager.createMap(scene: scnScene, player: fpsCtr.getNode(), map: map)
                 }
@@ -63,33 +45,51 @@ struct ContentView: View {
                         
                         if !fpsCtr.getMoveStatus() { return }
                         
+                        var image : UIImage = UIImage(systemName: "exclamationmark.triangle")!
+                        
+                        switch (viewModel.imageState) {
+                        case .empty:
+                            return
+                        case .loading(_):
+                            return
+                        case .success(let img):
+                            image = img
+                        case .failure(_):
+                            return
+                        }
+                        
                         if fpsCtr.playerFrontEmpty(scnScene) {
                             let sphere = SCNNode(geometry: SCNPlane(width: 1, height: 1))
+                            let framen = SCNScene(named: "frame_2.scn")!.rootNode
+//                            let framen = SCNNode(geometry: SCNSphere(radius: 1))
+                            
                             let playerPos = fpsCtr.getPosition()
                             let playerRot = fpsCtr.getRotation()
                             let imageMaterial = SCNMaterial()
                             
-                            sphere.position = playerPos
-                            sphere.position.x -= sin(playerRot.y) * 1.95
-                            sphere.position.z -= cos(playerRot.y) * 1.95
-                            sphere.rotation = playerRot
+                            let pW = image.size.width
+                            let pH = image.size.height
                             
-                            switch (viewModel.imageState) {
-                            case .empty:
-                                print("AHH")
-                                break
-                            case .loading(_):
-                                print("AHH loading")
-                                break
-                            case .success(let img):
-                                print("AHHH SUCCESS")
-                                imageMaterial.diffuse.contents = img
-                                sphere.geometry?.materials = [imageMaterial]
-                            case .failure(_):
-                                break
-                            }
+                            framen.addChildNode(sphere)
                             
-                            scnScene.rootNode.addChildNode(sphere)
+                            framen.position = playerPos
+                            framen.position.x -= sin(playerRot.y) * 1.99
+                            framen.position.z -= cos(playerRot.y) * 1.99
+                            framen.rotation = playerRot
+                            
+                            imageMaterial.diffuse.contents = image
+                            sphere.geometry?.materials = [imageMaterial]
+                            
+                            let sml = pW < pH ? (pW) : (pH)
+//                            let big = pW > pH ? (pW) : (pH)
+                            
+//                            sphere.scale.x = Float(pW / sml)
+//                            sphere.scale.y = Float(pH / sml)
+                            
+                            framen.scale.x = Float(pW / sml)
+                            framen.scale.y = Float(pH / sml)
+                            
+                            scnScene.rootNode.addChildNode(framen)
                         }
                     }, image: "plus.app.fill")
                     .padding()

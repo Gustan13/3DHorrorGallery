@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+ <asset>
+  <contributor>
+   <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
+  </contributor>
+  <created>2023-09-29T13:32:59Z</created>
+  <modified>2023-09-29T13:32:59Z</modified>
+  <unit meter="1.000000"/>
+  <up_axis>Y_UP</up_axis>
+ </asset>
+ <library_images>
+  <image id="checkers_png" name="checkers_png">
+   <init_from>checkers.png</init_from>
+  </image>
+  <image id="roof_jpg" name="roof_jpg">
+   <init_from>roof.jpg</init_from>
+  </image>
+ </library_images>
+ <library_materials>
+  <material id="Material-material" name="Material">
+   <instance_effect url="#effect_Material-material"/>
+  </material>
+  <material id="Material_001-material" name="Material_001">
+   <instance_effect url="#effect_Material_001-material"/>
+  </material>
+ </library_materials>
+ <library_effects>
+  <effect id="effect_Material-material">
+   <profile_COMMON>
+    <newparam sid="ID1_checkers_png_surface">
+     <surface type="2D">
+      <init_from>checkers_png</init_from>
+     </surface>
+    </newparam>
+    <newparam sid="ID1_checkers_png">
+     <sampler2D>
+      <source>ID1_checkers_png_surface</source>
+      <wrap_s>WRAP</wrap_s>
+      <wrap_t>WRAP</wrap_t>
+      <minfilter>LINEAR</minfilter>
+      <magfilter>LINEAR</magfilter>
+      <mipfilter>LINEAR</mipfilter>
+     </sampler2D>
+    </newparam>
+    <technique sid="common">
+     <lambert>
+      <diffuse>
+       <texture texture="ID1_checkers_png" texcoord="CHANNEL2"/>
+      </diffuse>
+      <transparency>
+       <float>1</float>
+      </transparency>
+      <index_of_refraction>
+       <float>1</float>
+      </index_of_refraction>
+     </lambert>
+    </technique>
+   </profile_COMMON>
+   <extra>
+    <technique profile="SceneKit">
+     <litPerPixel>1</litPerPixel>
+     <ambient_diffuse_lock>0</ambient_diffuse_lock>
+    </technique>
+   </extra>
+  </effect>
+  <effect id="effect_Material_001-material">
+   <profile_COMMON>
+    <newparam sid="ID2_roof_jpg_surface">
+     <surface type="2D">
+      <init_from>roof_jpg</init_from>
+     </surface>
+    </newparam>
+    <newparam sid="ID2_roof_jpg">
+     <sampler2D>
+      <source>ID2_roof_jpg_surface</source>
+      <wrap_s>WRAP</wrap_s>
+      <wrap_t>WRAP</wrap_t>
+      <minfilter>LINEAR</minfilter>
+      <magfilter>LINEAR</magfilter>
+      <mipfilter>LINEAR</mipfilter>
+     </sampler2D>
+    </newparam>
+    <technique sid="common">
+     <lambert>
+      <diffuse>
+       <texture texture="ID2_roof_jpg" texcoord="CHANNEL2"/>
+      </diffuse>
+      <transparency>
+       <float>1</float>
+      </transparency>
+      <index_of_refraction>
+       <float>1</float>
+      </index_of_refraction>
+     </lambert>
+    </technique>
+   </profile_COMMON>
+   <extra>
+    <technique profile="SceneKit">
+     <litPerPixel>1</litPerPixel>
+     <ambient_diffuse_lock>0</ambient_diffuse_lock>
+    </technique>
+   </extra>
+  </effect>
+ </library_effects>
+ <library_geometries>
+  <geometry id="geometry3">
+   <mesh>
+    <source id="Cube-mesh-positions">
+     <float_array id="ID4-array" count="36">-1 -1 1 1 -1 -1 -1 -1 -1 -1 -1 1 1 -1 1 1 -1 -1 1 1 1 -1 1 -1 1 1 -1 1 1 1 -1 1 1 -1 1 -1 </float_array>
+     <technique_common>
+      <accessor source="#ID4-array" count="12" stride="3">
+       <param name="X" type="float"/>
+       <param name="Y" type="float"/>
+       <param name="Z" type="float"/>
+      </accessor>
+     </technique_common>
+    </source>
+    <source id="Cube-mesh-normals">
+     <float_array id="ID5-array" count="36">0 1 -0 0 1 -0 0 1 -0 0 1 -0 0 1 -0 0 1 -0 0 -1 -0 0 -1 -0 0 -1 -0 0 -1 -0 0 -1 -0 0 -1 -0 </float_array>
+     <technique_common>
+      <accessor source="#ID5-array" count="12" stride="3">
+       <param name="X" type="float"/>
+       <param name="Y" type="float"/>
+       <param name="Z" type="float"/>
+      </accessor>
+     </technique_common>
+    </source>
+    <source id="Cube-mesh-map-0">
+     <float_array id="ID6-array" count="24">0.000356406 0.999644 0.999644 0.000356436 0.000356406 0.000356436 0.000356406 0.999644 0.999644 0.999644 0.999644 0.000356436 -0.402983 1.37809 1.36783 -0.392715 -0.402983 -0.392715 -0.402983 1.37809 1.36783 1.37809 1.36783 -0.392715 </float_array>
+     <technique_common>
+      <accessor source="#ID6-array" count="12" stride="2">
+       <param name="S" type="float"/>
+       <param name="T" type="float"/>
+      </accessor>
+     </technique_common>
+    </source>
+    <vertices id="Cube-mesh-positions-vertices">
+     <input semantic="POSITION" source="#Cube-mesh-positions"/>
+    </vertices>
+    <triangles count="2" material="geometryElement7">
+     <input semantic="VERTEX" offset="0" source="#Cube-mesh-positions-vertices"/>
+     <input semantic="NORMAL" offset="0" source="#Cube-mesh-normals"/>
+     <input semantic="TEXCOORD" offset="0" source="#Cube-mesh-map-0" set="1"/>
+     <p>0 1 2 3 4 5 </p>
+    </triangles>
+    <triangles count="2" material="geometryElement8">
+     <input semantic="VERTEX" offset="0" source="#Cube-mesh-positions-vertices"/>
+     <input semantic="NORMAL" offset="0" source="#Cube-mesh-normals"/>
+     <input semantic="TEXCOORD" offset="0" source="#Cube-mesh-map-0" set="1"/>
+     <p>6 7 8 9 10 11 </p>
+    </triangles>
+   </mesh>
+  </geometry>
+ </library_geometries>
+ <library_visual_scenes>
+  <visual_scene id="scene9">
+   <node id="Cube" name="Cube">
+    <matrix>2 0 0 0 0 2 0 0 0 0 2 0 0 0 0 1 </matrix>
+    <instance_geometry url="#geometry3">
+     <bind_material>
+      <technique_common>
+       <instance_material symbol="geometryElement7" target="#Material-material">
+        <bind_vertex_input semantic="CHANNEL2" input_semantic="TEXCOORD" input_set="1"/>
+       </instance_material>
+       <instance_material symbol="geometryElement8" target="#Material_001-material">
+        <bind_vertex_input semantic="CHANNEL2" input_semantic="TEXCOORD" input_set="1"/>
+       </instance_material>
+      </technique_common>
+     </bind_material>
+    </instance_geometry>
+   </node>
+  </visual_scene>
+ </library_visual_scenes>
+ <scene>
+  <instance_visual_scene url="#scene9"/>
+ </scene>
+</COLLADA>
