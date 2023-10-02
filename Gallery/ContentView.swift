@@ -8,7 +8,7 @@
 import SwiftUI
 import SceneKit
 
-struct ContentView: View {
+struct ContentView : View {
     
     var scnScene : SCNScene = SCNScene(named: "map_2.scn")!
     var scnCamera : SCNNode = SCNNode()
@@ -24,9 +24,9 @@ struct ContentView: View {
         ZStack {
             SceneView(scene: scnScene, pointOfView: fpsCtr.getNode(), preferredFramesPerSecond: 60, delegate: renderDelegate)
                 .onAppear {
-                    scnScene.rootNode.addChildNode(fpsCtr.getNode())
-                    
-                    mapManager.createMap(scene: scnScene, player: fpsCtr.getNode(), map: map)
+//                    scnScene.rootNode.addChildNode(fpsCtr.getNode())
+//                    
+//                    mapManager.createMap(scene: scnScene, player: fpsCtr.getNode(), map: map)
                 }
                 .edgesIgnoringSafeArea(.all)
             VStack {
@@ -37,10 +37,24 @@ struct ContentView: View {
                         }
                     }, image: "house.fill")
                     Spacer()
+                    InGameButton(funcToExec: {
+                        let paintings = fpsCtr.paintingInFront(scnScene)
+                        
+                        if paintings.isEmpty { return }
+                        
+                        for node in paintings {
+                            node.removeFromParentNode()
+                        }
+                    }, image: "trash")
+                    .padding()
                     EditableCircularProfileImage(viewModel: viewModel)
                     InGameButton(funcToExec: {
                         
                         if !fpsCtr.getMoveStatus() { return }
+                        
+                        let paintings = fpsCtr.paintingInFront(scnScene)
+                        
+                        if !paintings.isEmpty { return }
                         
                         var image : UIImage = UIImage(systemName: "exclamationmark.triangle")!
                         

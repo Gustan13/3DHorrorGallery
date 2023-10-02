@@ -32,6 +32,7 @@
 		52EC86222AC2F7A7005B55C1 /* GalleryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC86212AC2F7A7005B55C1 /* GalleryUITests.swift */; };
 		52EC86242AC2F7A7005B55C1 /* GalleryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC86232AC2F7A7005B55C1 /* GalleryUITestsLaunchTests.swift */; };
 		52EC86AF2AC3C638005B55C1 /* FPSController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC86AE2AC3C638005B55C1 /* FPSController.swift */; };
+		52FFC2AE2AC7BD30003CB37F /* MapEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FFC2AD2AC7BD30003CB37F /* MapEditor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,8 @@
 		52EC86212AC2F7A7005B55C1 /* GalleryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryUITests.swift; sourceTree = "<group>"; };
 		52EC86232AC2F7A7005B55C1 /* GalleryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		52EC86AE2AC3C638005B55C1 /* FPSController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPSController.swift; sourceTree = "<group>"; };
+		52FFC2AD2AC7BD30003CB37F /* MapEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEditor.swift; sourceTree = "<group>"; };
+		52FFC2B02ACA45FA003CB37F /* footsteps.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = footsteps.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,8 +133,8 @@
 		52EC86052AC2F7A6005B55C1 /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
+				52FFC2AF2ACA45D4003CB37F /* Resources */,
 				52EC867A2AC31383005B55C1 /* Objs */,
-				52EC86302AC30036005B55C1 /* Shaders */,
 				52EC86062AC2F7A6005B55C1 /* GalleryApp.swift */,
 				521B4A682AC70D3300E372C4 /* Main.swift */,
 				52EC86082AC2F7A6005B55C1 /* ContentView.swift */,
@@ -142,6 +145,7 @@
 				521B4A412AC5AD8C00E372C4 /* ProfileModel.swift */,
 				521B4A432AC5AE2400E372C4 /* ProfileImage.swift */,
 				521B4A452AC5AE7400E372C4 /* Profile.swift */,
+				52FFC2AD2AC7BD30003CB37F /* MapEditor.swift */,
 				52EC860A2AC2F7A7005B55C1 /* Assets.xcassets */,
 				52EC860C2AC2F7A7005B55C1 /* Preview Content */,
 			);
@@ -173,13 +177,6 @@
 			path = GalleryUITests;
 			sourceTree = "<group>";
 		};
-		52EC86302AC30036005B55C1 /* Shaders */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Shaders;
-			sourceTree = "<group>";
-		};
 		52EC867A2AC31383005B55C1 /* Objs */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +192,14 @@
 				521B4A622AC7093400E372C4 /* roof.jpg */,
 			);
 			path = Objs;
+			sourceTree = "<group>";
+		};
+		52FFC2AF2ACA45D4003CB37F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				52FFC2B02ACA45FA003CB37F /* footsteps.m4a */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,6 +349,7 @@
 				521B4A3C2AC5235400E372C4 /* MapManager.swift in Sources */,
 				52EC86AF2AC3C638005B55C1 /* FPSController.swift in Sources */,
 				52EC86092AC2F7A6005B55C1 /* ContentView.swift in Sources */,
+				52FFC2AE2AC7BD30003CB37F /* MapEditor.swift in Sources */,
 				521B4A3E2AC5A10900E372C4 /* InGameButton.swift in Sources */,
 				521B4A462AC5AE7400E372C4 /* Profile.swift in Sources */,
 				52EC86072AC2F7A6005B55C1 /* GalleryApp.swift in Sources */,

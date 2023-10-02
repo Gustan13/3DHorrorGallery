@@ -6,6 +6,7 @@
 //
 
 import SceneKit
+import SwiftUI
 
 public enum Direction : Int {
     case esquerda = 1
@@ -26,7 +27,7 @@ class FPSController : ObservableObject {
         playerNode.light?.type = .omni
         playerNode.light?.color = UIColor.white
         playerNode.light?.attenuationEndDistance = 15
-        playerNode.light?.intensity = 500
+        playerNode.light?.intensity = 100
         
         playerNode.camera?.fieldOfView = 65
         self.setPosition(SCNVector3(x: 0, y: 0, z: 0))
@@ -112,5 +113,28 @@ class FPSController : ObservableObject {
             return true
         }
         return false
+    }
+    
+    public func paintingInFront(_ scene: SCNScene) -> [SCNNode] {
+        var nextPosition = playerNode.position
+        
+        nextPosition.x += sin(playerNode.rotation.y) * -1.95
+        nextPosition.z += cos(playerNode.rotation.y) * -1.95
+        
+        nextPosition.x = round(nextPosition.x)
+        nextPosition.z = round(nextPosition.z)
+        
+        let obstacle = scene.rootNode.childNodes { node, _ in
+            
+            let distance_x = floor(abs(nextPosition.x - node.position.x))
+            let distance_z = floor(abs(nextPosition.z - node.position.z))
+            
+            if distance_x <= 0.5 && distance_z <= 0.5 {
+                return true
+            }
+            return false
+        }
+        
+        return obstacle
     }
 }
